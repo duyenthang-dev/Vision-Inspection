@@ -2,36 +2,10 @@ import { View, Text, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
-import AppLoading from "expo-app-loading";
-import {
-   useFonts,
-   Inter_100Thin,
-   Inter_200ExtraLight,
-   Inter_300Light,
-   Inter_400Regular,
-   Inter_500Medium,
-   Inter_600SemiBold,
-   Inter_700Bold,
-   Inter_800ExtraBold,
-   Inter_900Black,
-} from "@expo-google-fonts/inter";
+
 
 const HeaderTab = () => {
-   let [fontsLoaded] = useFonts({
-      Inter_100Thin,
-      Inter_200ExtraLight,
-      Inter_300Light,
-      Inter_400Regular,
-      Inter_500Medium,
-      Inter_600SemiBold,
-      Inter_700Bold,
-      Inter_800ExtraBold,
-      Inter_900Black,
-   });
-
-   if (!fontsLoaded) {
-      return <AppLoading />;
-   }
+   
 
    return (
       <View style={styles.headerContainer}>
