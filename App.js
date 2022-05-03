@@ -5,6 +5,10 @@ import Home from './screens/Home'
 import InspectDetails from './screens/InspectDetails'
 import Saved from './screens/Saved'
 import Profile from './screens/Profile'
+import SplashScreen from './screens/SplashScreen'
+import Login from './screens/Login'
+import Register from './screens/Register'
+import React, { useState } from 'react'
 
 // import Navigator from './routes/HomeStack'
 import { NavigationContainer } from '@react-navigation/native'
@@ -27,12 +31,14 @@ import {
 } from '@expo-google-fonts/inter'
 
 const Tab = createBottomTabNavigator()
+const Stack = createNativeStackNavigator()
 
 const optionConfig = {
    headerShown: false,
 }
 
 export default function App() {
+   let [isLogin, setLogin] = useState(false)
    let [fontsLoaded] = useFonts({
       Inter_100Thin,
       Inter_200ExtraLight,
@@ -49,7 +55,7 @@ export default function App() {
       return <AppLoading />
    }
 
-   return (
+   return isLogin ? (
       <NavigationContainer>
          <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -73,6 +79,29 @@ export default function App() {
             <Tab.Screen name="Saved" component={InspectDetails} />
             <Tab.Screen name="Profile" component={Profile} />
          </Tab.Navigator>
+      </NavigationContainer>
+   ) : (
+      <NavigationContainer>
+         <Stack.Navigator initialRouteName="">
+            <Stack.Screen
+               name="Login"
+               component={Login}
+               options={{
+                  title: 'Đăng nhập',
+                  // Center the header title on Android
+                  headerTitleAlign: 'center',
+               }}
+            />
+            <Stack.Screen
+               name="Register"
+               component={Register}
+               options={{
+                  title: 'Đăng ký',
+                  // Center the header title on Android
+                  headerTitleAlign: 'center',
+               }}
+            />
+         </Stack.Navigator>
       </NavigationContainer>
    )
 }

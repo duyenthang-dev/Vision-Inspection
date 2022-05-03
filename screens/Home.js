@@ -41,8 +41,8 @@ export default function Home() {
                <View style={styles.imgContainer}></View>
             </View>
             <View style={styles.btnContainer}>
-               <ButtonPrimary text="Chọn ảnh" style={{ marginRight: 15 }} />
-               <ButtonPrimary text="Phân tích" style={{ marginRight: 15 }} />
+               <ButtonPrimary text="Chọn ảnh" style={{ marginRight: 15}}  h = {40} w = {120}/>
+               <ButtonPrimary text="Phân tích" style={{ marginRight: 15 }} h = {40} w = {120}/>
             </View>
          </View>
       </SafeAreaView>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#FFFFFF',
       paddingLeft: 15,
       paddingRight: 15,
-      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 15,
    },
 
    cardContainer: {

@@ -17,6 +17,13 @@ export const globalStyles = StyleSheet.create({
       fontFamily: "Inter_400Regular",
       color: "#021523",
    },
+
+   mediumText: {
+      fontSize: 15,
+      fontFamily: "Inter_500Medium",
+      color: "#021523",
+   },
+   
    subText: {
       fontSize: 15,
       fontFamily: "Inter_400Regular",
