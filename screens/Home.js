@@ -1,22 +1,38 @@
-import { SafeAreaView, Text, StyleSheet, TextInput, View, Platform, StatusBar } from 'react-native'
-import React, { useState } from 'react'
+import {
+   SafeAreaView,
+   Text,
+   StyleSheet,
+   TextInput,
+   View,
+   Platform,
+   StatusBar,
+   TouchableHighlight,
+   Image,
+} from 'react-native'
+import React from 'react'
 import HeaderTab from '../components/HeaderTab'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { globalStyles } from '../styles/global'
 import Card from './../components/Card'
 import ButtonPrimary from '../components/PrimaryButton'
-
-// const Tab = createBottomTabNavigator();
-export default function Home() {
+import { useSelector } from 'react-redux'
+export default function Home({ navigation }) {
    const img1 = require('./../assets/images/img1.jpg')
    const img2 = require('./../assets/images/img2.jpg')
+   const handleUsingCamera = () => {
+      navigation.navigate('CameraAccess')
+   }
+   const img = useSelector((state) => state.camera.image)
+
    return (
       <SafeAreaView style={styles.container}>
          <HeaderTab />
-         <View style={styles.cameraAccess}>
-            <MaterialCommunityIcons name="cube-scan" size={24} color="#61AF2B" />
-            <Text style={styles.cameraText}>Quét ngay và nhận diện bề mặt</Text>
-         </View>
+         <TouchableHighlight style={styles.cameraAccess} onPress={handleUsingCamera}>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+               <MaterialCommunityIcons name="cube-scan" size={24} color="#61AF2B" />
+               <Text style={styles.cameraText}>Quét ngay và nhận diện bề mặt</Text>
+            </View>
+         </TouchableHighlight>
 
          <View
             style={{
@@ -38,11 +54,13 @@ export default function Home() {
          <View style={{ marginTop: 20 }}>
             <Text style={globalStyles.titleText}>Tải ảnh lên để quét</Text>
             <View style={{ display: 'flex', alignItems: 'center', marginTop: 15 }}>
-               <View style={styles.imgContainer}></View>
+               <View style={styles.imgContainer}>
+                  {img && <Image source={{ uri: img }} style={{ flex: 1 }} />}
+               </View>
             </View>
             <View style={styles.btnContainer}>
-               <ButtonPrimary text="Chọn ảnh" style={{ marginRight: 15}}  h = {40} w = {120}/>
-               <ButtonPrimary text="Phân tích" style={{ marginRight: 15 }} h = {40} w = {120}/>
+               <ButtonPrimary text="Chọn ảnh" style={{ marginRight: 15 }} h={40} w={120} />
+               <ButtonPrimary text="Phân tích" style={{ marginRight: 15 }} h={40} w={120} />
             </View>
          </View>
       </SafeAreaView>
@@ -66,6 +84,7 @@ const styles = StyleSheet.create({
       paddingTop: 10,
       borderBottomColor: '#d9d9d9',
       borderBottomWidth: 1,
+     
    },
 
    cameraAccess: {
@@ -83,7 +102,7 @@ const styles = StyleSheet.create({
 
    cameraText: {
       color: '#61AF2B',
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: 'bold',
       marginLeft: 10,
    },

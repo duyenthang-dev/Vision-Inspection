@@ -46,13 +46,14 @@ const styles = StyleSheet.create({
       bottom: '0%',
       marginLeft: 8,
       fontWeight: "bold",
-      
+   
    },
    desc: {
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: 'bold',
       marginLeft: 8,
-      marginTop: 10
+      marginTop: 10,
+      marginRight: 8
    }
 });
 

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, StatusBar, TextInput, TouchableHighlight } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import ButtonPrimary from './../components/PrimaryButton'

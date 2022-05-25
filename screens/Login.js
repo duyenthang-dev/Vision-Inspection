@@ -1,12 +1,11 @@
 import { View, Text, SafeAreaView, StyleSheet, StatusBar, TextInput, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
-import ButtonPrimary from './../components/PrimaryButton'
 import { globalStyles } from '../styles/global'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
-import {login, signIn} from './../redux/action/authAction'
+import { signIn } from './../redux/action/authAction'
 
 const Login = ({ navigation }) => {
    const dispatch = useDispatch()
@@ -21,7 +20,6 @@ const Login = ({ navigation }) => {
          email: email,
          password: psw,
       }
-      // console.log(data)
       dispatch(signIn(data))
    }
 
@@ -42,7 +40,7 @@ const Login = ({ navigation }) => {
          </TouchableHighlight>
 
          <TouchableHighlight underlayColor="#DDDDDD" style={styles.btnStyle} onPress={handleLogin}>
-            <Text style={{fontSize: 15, color:'#fff', fontFamily: 'Inter_600SemiBold'}}>Đăng nhập</Text>
+            <Text style={{ fontSize: 15, color: '#fff', fontFamily: 'Inter_600SemiBold' }}>Đăng nhập</Text>
          </TouchableHighlight>
 
          <View style={styles.signUpNav}>
@@ -180,9 +178,8 @@ const styles = StyleSheet.create({
       shadowRadius: 10.32,
 
       elevation: 16,
-      height: 56
+      height: 56,
    },
-   
 })
 
 export default Login
