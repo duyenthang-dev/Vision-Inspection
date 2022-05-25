@@ -8,8 +8,9 @@ export const globalStyles = StyleSheet.create({
 
    titleText: {
       fontSize: 18,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "Inter_600SemiBold",
       color: "#021523",
+      textTransform: "uppercase",
    },
 
    primaryText: {

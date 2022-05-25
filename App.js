@@ -1,14 +1,15 @@
 import AppLoading from 'expo-app-loading'
-import React, { } from 'react'
-
+import React from 'react'
 import thunk from 'redux-thunk'
 import rootReducer from './redux/reducer/rootReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import Layout from './components/Layout'
+import CameraAccess from './components/CameraAccess'
+import HomeScreen from './screens/HomeScreen'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+import { Ionicons } from '@expo/vector-icons'
 
 import {
    useFonts,
@@ -23,9 +24,11 @@ import {
    Inter_900Black,
 } from '@expo-google-fonts/inter'
 
+const RootStack = createNativeStackNavigator()
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-export default function App({ navigation }) {
-   // let [isLogin, setLogin] = useState(false)
+export default function App() {
    let [fontsLoaded] = useFonts({
       Inter_100Thin,
       Inter_200ExtraLight,
@@ -44,7 +47,34 @@ export default function App({ navigation }) {
 
    return (
       <Provider store={store}>
-         <Layout />
+         <NavigationContainer>
+            <RootStack.Navigator initialRouteName='HomeScreen'>
+               <RootStack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+               <RootStack.Screen
+                  name="CameraAccess"
+                  component={CameraAccess}
+                  options={({ navigation }) => ({
+                     title: '',
+                     headerStyle: {
+                        boxShadow: 'none',
+                     },
+                     headerShadowVisible: false,
+                     headerTransparent: true,
+                     headerLeft: (props) => (
+                        <Ionicons
+                           {...props}
+                           name="close"
+                           size={30}
+                           color="white"
+                           onPress={() => {
+                              navigation.goBack()
+                           }}
+                        />
+                     ),
+                  })}
+               />
+            </RootStack.Navigator>
+         </NavigationContainer>
       </Provider>
    )
 }

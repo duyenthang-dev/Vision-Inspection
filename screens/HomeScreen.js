@@ -1,13 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import AppLoading from 'expo-app-loading'
 import Home from './../screens/Home'
-import InspectDetails from '../components/InspectDetails'
 import Saved from '../components/Saved'
 import Profile from './../screens/Profile'
 import SplashScreen from './../screens/SplashScreen'
 import Login from './../screens/Login'
 import Register from './../screens/Register'
-import CameraAccess from './../components/CameraAccess'
 
 import React, { useState, useEffect } from 'react'
 
@@ -31,8 +29,7 @@ const saveConfig = {
    headerTitleAlign: 'center',
 }
 
-
-const Layout = () => {
+const HomeScreen = () => {
    const isLogin = useSelector((state) => state.auth.isLogin)
 
    return isLogin ? (
@@ -96,6 +93,6 @@ const Layout = () => {
    )
 }
 
-export default Layout
+export default HomeScreen
 
 const styles = StyleSheet.create({})
