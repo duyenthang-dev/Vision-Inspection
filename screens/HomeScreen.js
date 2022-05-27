@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import AppLoading from 'expo-app-loading'
-import Home from './../screens/Home'
+import Home from '../components/Home'
 import Saved from '../components/Saved'
-import Profile from './../screens/Profile'
+import SaveScreen from './../screens/SaveScreen'
+import Profile from './../components/Profile'
 import SplashScreen from './../screens/SplashScreen'
 import Login from './../screens/Login'
 import Register from './../screens/Register'
-
 import React, { useState, useEffect } from 'react'
 
 // import Navigator from './routes/HomeStack'
@@ -40,7 +40,7 @@ const HomeScreen = () => {
 
                if (route.name === 'Home') {
                   iconName = focused ? 'home' : 'home-outline'
-               } else if (route.name === 'Saved') {
+               } else if (route.name === 'SaveScreen') {
                   iconName = focused ? 'save' : 'save-outline'
                } else if (route.name === 'Profile') {
                   iconName = focused ? 'person' : 'person-outline'
@@ -52,7 +52,7 @@ const HomeScreen = () => {
          })}
       >
          <Tab.Screen name="Home" component={Home} options={homeConfig} />
-         <Tab.Screen name="Saved" component={Saved} options={saveConfig} />
+         <Tab.Screen name="SaveScreen" component={SaveScreen} options={saveConfig} />
          <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>
    ) : (

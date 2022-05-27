@@ -10,11 +10,11 @@ import {
    Image,
 } from 'react-native'
 import React from 'react'
-import HeaderTab from '../components/HeaderTab'
+import HeaderTab from './HeaderTab'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { globalStyles } from '../styles/global'
-import Card from './../components/Card'
-import ButtonPrimary from '../components/PrimaryButton'
+import Card from './Card'
+import ButtonPrimary from './PrimaryButton'
 import { useSelector } from 'react-redux'
 export default function Home({ navigation }) {
    const img1 = require('./../assets/images/img1.jpg')
