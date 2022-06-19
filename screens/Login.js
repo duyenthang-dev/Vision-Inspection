@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
          <View style={{ position: 'relative' }}>
             <TextInput
                style={styles.textInput}
-               placeholder="Mậu khẩu"
+               placeholder="Mật khẩu"
                secureTextEntry={true}
                onChangeText={setPsw}
             />

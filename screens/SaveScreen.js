@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView, StyleSheet} from 'react-native'
 import React from 'react'
 import Saved from './../components/Saved'
 import InspectDetails from './../components/InspectDetails'
@@ -8,32 +8,34 @@ const SaveStack = createNativeStackNavigator()
 
 const SaveScreen = () => {
    return (
-      <SaveStack.Navigator initialRouteName='SavedScreen'>
-         <SaveStack.Screen
-            name="SavedScreen"
-            component={Saved}
-            options={{
-               title: 'Các bề mặt đã lưu',
-               headerTitleAlign: 'center',
-               headerShadowVisible: false,
-               headerShown: false,
-            }}
-         />
-         
-         <SaveStack.Screen
-            name="InspectDetails"
-            component={InspectDetails}
-            options={{
-               title: 'Kết quả phân tích',
-               headerTitleAlign: 'center',
-               headerShadowVisible: false,
-               headerShown: false,
-            }}
-         />
-        
-      </SaveStack.Navigator>
-      
+      <View style={styles.container}>
+         <ScrollView>
+            <View>
+               <Saved />
+            </View>
+
+            <View>
+               <InspectDetails />
+            </View>
+         </ScrollView>
+      </View>
    )
 }
 
 export default SaveScreen
+
+const styles = StyleSheet.create({
+   container: {
+      display: 'flex',
+      position: 'relative'
+   },
+   saved: {
+      zIndex: 1,
+   },
+   inspectDetails: {
+      zIndex: 2,
+      borderTopRightRadius: 10,
+      borderTopLeftRadius: 10,
+      borderWidth: 1
+   }
+})
