@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, Button, Alert, TouchableHighlight } from 'react-native'
+import { StyleSheet, Text, View, Button, Alert, TouchableHighlight, TouchableOpacity } from 'react-native'
 import React from 'react'
 import CardDetails from './CardDetails'
 import ReadMore from '@fawazahmed/react-native-read-more';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux'
 
 
 const dimenImg = require('./../assets/images/dimension.jpg')
@@ -14,6 +15,8 @@ const color = require('./../assets/images/color.jpg')
 
 
 const InspectDetails = () => {
+  const object = useSelector((state) => state.camera.object)
+  const detail = useSelector((state) => state.camera.detail)
   return (
     <View style={styles.layout}>
       <View style={styles.firstBar}
@@ -25,7 +28,7 @@ const InspectDetails = () => {
       </View>
 
       <View>
-        <Text style={styles.object}>Bức tường phẳng</Text>
+        <Text style={styles.object}>{object}</Text>
       </View>
 
       <View>
@@ -36,7 +39,7 @@ const InspectDetails = () => {
 
         <View>
           <ReadMore numberOfLines={3} style={styles.resultContent}>
-            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget libero lacinia, feugiat nisl suscipit, egestas ante. Cras commodo est quis vulputate ultrices."}
+            {detail}
           </ReadMore>
         </View>
       </View>
@@ -54,12 +57,12 @@ const InspectDetails = () => {
       </View>
 
       <View>
-        <TouchableHighlight 
+        <TouchableOpacity 
           style={styles.touchableHighlight}
           onPress={() => Alert.alert('The result was saved')}
         >
           <Text style={styles.text}>Save the result</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
     paddingRight: 80,
     paddingLeft: 80,
     backgroundColor: 'green',
-    borderRadius: 15,
+    borderRadius: 20,
     color: 'white',
     fontSize: 20
   }
